@@ -1,6 +1,8 @@
 <?php // Filename: delete-record.php
 
+// include file to connect to database
 require __DIR__ . "/inc/db/mysqli_connect.inc.php";
+
 require __DIR__ . "/inc/app/config.inc.php";
 
 // check to see if id is in the query string

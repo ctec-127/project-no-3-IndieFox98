@@ -1,6 +1,8 @@
-<?php // Filename: connect.inc.php
+<?php // Filename: content.inc.php
 
+// include file to connect to database
 require __DIR__ . "/../db/mysqli_connect.inc.php";
+
 require __DIR__ . "/../functions/functions.inc.php";
 require __DIR__ . "/../app/config.inc.php";
 
@@ -53,7 +55,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         // echo $sql;
 
         $result = $db->query($sql);
-        if (!$result) {
+        if (!$result) {  # if there was an sql error (e.g. duplicate entry)
             echo '<div class="alert alert-danger" role="alert">
             I am sorry, but I could not save that record for you. ' .  
             $db->error . '.</div>';
@@ -61,6 +63,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             echo '<div class="alert alert-success" role="alert">
             I saved that new record for you!
           </div>';
+            // make GD sure the values stored are emptied for next time
             unset($first);
             unset($last);
             unset($id);

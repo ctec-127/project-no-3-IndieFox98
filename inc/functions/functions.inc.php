@@ -1,5 +1,6 @@
 <?php // Filename: function.inc.php
 
+// function to display message via GET request
 function display_message(){
     if (isset($_GET['message'])) {
         $message = $_GET['message'];
@@ -9,7 +10,7 @@ function display_message(){
     }
 }
 
-
+// function to create links for filtering records by last name
 function display_letter_filters($filter){  
     echo '<span class="mr-3">Filter by <strong>Last Name</strong></span>';
  
@@ -26,7 +27,7 @@ function display_letter_filters($filter){
     echo '<a class="text-secondary p-2 mr-2 bg-success text-light border rounded" href="?clearfilter" title="Reset Filter">Reset</a>&nbsp;&nbsp;';
 }
 
-
+// function to show the data table
 function display_record_table($result){
     echo '<div class="table-responsive">';
     echo "<table class=\"table table-striped table-hover table-sm mt-4\">";
@@ -48,9 +49,9 @@ function display_record_table($result){
     echo '</div>';
 }
 
-
+// function to display errors during record creation in case of empty fields
 function display_error_bucket($error_bucket){
-    echo '<p>The following errors were deteced:</p>';
+    echo '<p>The following errors were detected:</p>';
     echo '<div class="pt-4 alert alert-warning" role="alert">';
         echo '<ul>';
         foreach ($error_bucket as $text){

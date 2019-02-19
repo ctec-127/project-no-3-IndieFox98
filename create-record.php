@@ -1,4 +1,6 @@
 <?php // Filename: create-record.php
+
+// Provides page title for head section in inc/layout/header.inc.php file
 $pageTitle = "Create Record";
 require 'inc/layout/header.inc.php'; 
 ?>

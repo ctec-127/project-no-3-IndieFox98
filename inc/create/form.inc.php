@@ -10,7 +10,7 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <input class="form-control" type="text" id="first" name="first" value="<?php echo (isset($first) ? $first: '');?>">
     <br>
     <label class="col-form-label" for="last">Last Name </label>
-    <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $first: '');?>"">
+    <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $last: '');?>"">
     <br>
     <label class="col-form-label" for="id">Student ID </label>
     <input class="form-control" type="text" id="id" name="id" value="<?php echo (isset($id) ? $id: '');?>"">

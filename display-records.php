@@ -1,5 +1,6 @@
 <?php // Filename: display-records.php
 
+// Provides page title for head section in inc/layout/header.inc.php file
 $pageTitle = "Record Management";
 require 'inc/layout/header.inc.php'; 
 ?>
