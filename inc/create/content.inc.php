@@ -44,13 +44,13 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$phone = $_POST['phone'];
         $phone = $db->real_escape_string($_POST['phone']);
     }
-    if (empty($_POST['gpa']) && $_POST['gpa'] != 0) {  # work around interpreting 0 as empty
+    if (empty($_POST['gpa']) && $_POST['gpa'] != "0") {  # work around interpreting 0 as empty
         array_push($error_bucket,"<p>A GPA is required.</p>");
     } else {
         #$gpa = $_POST['gpa'];
         $gpa = $db->real_escape_string($_POST['gpa']);
     }
-    if (empty($_POST['aid']) && $_POST['aid'] != 0) {  # work around interpreting 0 as empty
+    if (!isset($_POST['aid']) || empty($_POST['aid']) && $_POST['aid'] != "0") {  # work around interpreting 0 as empty
         array_push($error_bucket,"<p>Please answer the Financial Aid section.</p>");
     } else {
         #$aid = $_POST['aid'];
