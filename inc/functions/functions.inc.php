@@ -31,7 +31,7 @@ function display_letter_filters($filter){
 function display_record_table($result){
     echo '<div class="table-responsive">';
     echo "<table class=\"table table-striped table-hover table-sm mt-4\">";
-    echo '<thead class="thead-dark"><tr><th>Actions</th><th><a href="?sortby=student_id">Student ID</a></th><th><a href="?sortby=first_name">First Name</a></th><th><a href="?sortby=last_name">Last Name</a></th><th><a href="?sortby=email">Email</a></th><th><a href="?sortby=phone">Phone</a></th><th><a href="?sortby=gpa">GPA</a></th></tr></thead>';
+    echo '<thead class="thead-dark"><tr><th>Actions</th><th><a href="?sortby=student_id">Student ID</a></th><th><a href="?sortby=first_name">First Name</a></th><th><a href="?sortby=last_name">Last Name</a></th><th><a href="?sortby=email">Email</a></th><th><a href="?sortby=phone">Phone</a></th><th><a href="?sortby=degree_program">Program</a></th><th><a href="?sortby=gpa">GPA</a></th><th><a href="?sortby=financial_aid">Financial Aid?</a></th></tr></thead>';
     # $row will be an associative array containing one row of data at a time
     while ($row = $result->fetch_assoc()){
         # display rows and columns of data
@@ -42,7 +42,9 @@ function display_record_table($result){
         echo "<td><strong>{$row['last_name']}</strong></td>";
         echo "<td>{$row['email']}</td>";
         echo "<td>{$row['phone']}</td>";
+        echo "<td>{$row['degree_program']}</td>";
         echo "<td>{$row['gpa']}</td>";
+        echo "<td>{$row['financial_aid']}</td>";
         echo '</tr>';
     } // end while
     // closing table tag and div
