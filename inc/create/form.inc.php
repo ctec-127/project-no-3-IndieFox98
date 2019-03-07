@@ -31,9 +31,9 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <input class="form-control" type="number" id="gpa" name="gpa" step=".01" value="<?php echo (isset($gpa) ? $gpa: '');?>">
     <br>
     <!-- financial aid -->
-    <label class="col-form-label" for="aid">Financial Aid? </label>
-    <input class="radio-inline ml-4 mr-1" type="radio" id="aidy" name="aid" value="1" <?php echo (isset($aid) && $aid == "1" ? 'checked': '');?>>Yes
-    <input class="radio-inline ml-4 mr-1" type="radio" id="aidn" name="aid" value="0" <?php echo (isset($aid) && $aid == "0" ? 'checked': '');?>>No<br><br>
+    Financial Aid?<br>
+    <label class="col-form-label" for="aidy">Yes</label><input class="radio-inline ml-2 mr-4" type="radio" id="aidy" name="aid" value="1" <?php echo (isset($aid) && $aid == "1" ? 'checked': '');?>>
+    <label class="col-form-label" for="aidn">No</label><input class="radio-inline ml-2 mr-4" type="radio" id="aidn" name="aid" value="0" <?php echo (isset($aid) && $aid == "0" ? 'checked': '');?>><br><br>
     <!-- degree program -->
     <label class="col-form-label" for="program">Degree Program </label>
     <select class="form-control" id="program" name="program">
