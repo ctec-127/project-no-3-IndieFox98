@@ -2,13 +2,13 @@
 
 // Provides page title for head section in inc/layout/header.inc.php file
 $pageTitle = "Search Records";
-require 'inc/layout/header.inc.php';
+require_once 'inc/layout/header.inc.php';
 
 // include file to connect to database
-require 'inc/db/mysqli_connect.inc.php';
+require_once 'inc/db/mysqli_connect.inc.php';
 
-require 'inc/functions/functions.inc.php';
-require 'inc/app/config.inc.php';
+require_once 'inc/functions/functions.inc.php';
+require_once 'inc/app/config.inc.php';
 ?>
 
 <div class="container">
@@ -40,4 +40,4 @@ require 'inc/app/config.inc.php';
     </div>
 </div>
 
-<?php require 'inc/layout/footer.inc.php';?>
+<?php require_once 'inc/layout/footer.inc.php';?>

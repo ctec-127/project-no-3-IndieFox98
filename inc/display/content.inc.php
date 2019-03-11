@@ -1,10 +1,10 @@
 <?php // Filename: content.inc.php
 
 // include file to connect to database
-require __DIR__ . "/../db/mysqli_connect.inc.php";
+require_once __DIR__ . "/../db/mysqli_connect.inc.php";
 
 // include file with functions used in the last lines of this file
-require __DIR__ . "/../functions/functions.inc.php";
+// require_once __DIR__ . "/../functions/functions.inc.php";
 
 $orderby = 'last_name';
 $filter = '';
