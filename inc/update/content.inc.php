@@ -1,4 +1,4 @@
-<?php // Filename: connect.inc.php
+<?php // Filename: content.inc.php
 
 require_once __DIR__ . "/../db/mysqli_connect.inc.php";
 require_once __DIR__ . "/../app/config.inc.php";
@@ -53,11 +53,16 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     } else {
         $program = $db->real_escape_string(strip_tags($_POST['program']));
     }
+    if (empty($_POST['gday'])) {
+        array_push($error_bucket,"<p>Please enter your graduation date.</p>");
+    } else {
+        $gday = $db->real_escape_string(strip_tags($_POST['gday']));
+    }
 
     // If we have no errors than we can try and insert the data
     if (count($error_bucket) == 0) {
         // Time for some SQL
-        $sql = "UPDATE $db_table SET first_name='$first', last_name='$last', student_id=$sid, email='$email', phone='$phone', gpa='$gpa', financial_aid='$aid', degree_program='$program' WHERE id=$id";
+        $sql = "UPDATE $db_table SET first_name='$first', last_name='$last', student_id=$sid, email='$email', phone='$phone', gpa='$gpa', financial_aid='$aid', degree_program='$program', graduation_date='$gday' WHERE id=$id";
 
         $result = $db->query($sql);
         if (!$result) {
@@ -76,6 +81,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             unset($gpa);
             unset($aid);
             unset($program);
+            unset($gday);
             unset($id);
         }
     } else {
@@ -99,5 +105,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $gpa = $row['gpa'];
         $aid = $row['financial_aid'];
         $program = $row['degree_program'];
+        $gday = $row['graduation_date'];
     }
 }

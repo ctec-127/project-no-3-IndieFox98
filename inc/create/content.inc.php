@@ -71,12 +71,19 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$program = $db->real_escape_string($_POST['program']);
         $program = $db->real_escape_string(strip_tags($_POST['program']));
     }
+    if (empty($_POST['gday'])) {
+        array_push($error_bucket,"<p>Please enter your graduation date.</p>");
+    } else {
+        #$gday = $_POST['gday'];
+        #$gday = $db->real_escape_string($_POST['gday']);
+        $gday = $db->real_escape_string(strip_tags($_POST['gday']));
+    }
 
     // If we have no errors than we can try and insert the data
     if (count($error_bucket) == 0) {
         // Time for some SQL
-        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program) ";
-        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone',$gpa,$aid,'$program')";
+        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program,graduation_date) ";
+        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone',$gpa,$aid,'$program','$gday')";
 
         // comment in for debug of SQL
         // echo $sql;
@@ -99,6 +106,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             unset($gpa);
             unset($aid);
             unset($program);
+            unset($gday);
         }
     } else {
         display_error_bucket($error_bucket);

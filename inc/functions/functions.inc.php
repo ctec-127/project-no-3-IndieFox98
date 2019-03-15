@@ -1,4 +1,4 @@
-<?php // Filename: function.inc.php
+<?php // Filename: functions.inc.php
 
 // function to display message via GET request
 function display_message(){
@@ -31,7 +31,7 @@ function display_letter_filters($filter){
 function display_record_table($result){
     echo '<div class="table-responsive">';
     echo "<table class=\"table table-striped table-hover table-sm mt-3\">";
-    echo '<thead class="thead-dark"><tr><th>Actions</th><th><a href="?sortby=student_id">Student ID</a></th><th><a href="?sortby=first_name">First Name</a></th><th><a href="?sortby=last_name">Last Name</a></th><th><a href="?sortby=email">Email</a></th><th><a href="?sortby=phone">Phone</a></th><th><a href="?sortby=degree_program">Program</a></th><th><a href="?sortby=gpa">GPA</a></th><th><a href="?sortby=financial_aid">Financial Aid?</a></th></tr></thead>';
+    echo '<thead class="thead-dark"><tr><th>Actions</th><th><a href="?sortby=student_id">Student ID</a></th><th><a href="?sortby=first_name">First Name</a></th><th><a href="?sortby=last_name">Last Name</a></th><th><a href="?sortby=email">Email</a></th><th><a href="?sortby=phone">Phone</a></th><th><a href="?sortby=degree_program">Program</a></th><th><a href="?sortby=gpa">GPA</a></th><th><a href="?sortby=financial_aid">Financial Aid?</a></th><th><a href="?sortby=graduation_date">Graduation Date</a></th></tr></thead>';
     # $row will be an associative array containing one row of data at a time
     while ($row = $result->fetch_assoc()){
         # display rows and columns of data
@@ -45,6 +45,7 @@ function display_record_table($result){
         echo "<td>{$row['degree_program']}</td>";
         echo "<td>{$row['gpa']}</td>";
         echo "<td>{$row['financial_aid']}</td>";
+        echo "<td>{$row['graduation_date']}</td>";
         echo '</tr>';
     } // end while
     // closing table tag and div
@@ -72,5 +73,16 @@ function echoActiveClassIfRequestMatches($requestUri)
 
     if ($current_file_name == $requestUri)
         echo 'active';
+}
+
+// function to change submit button text in form.inc.php depending on request uri
+function display_button_text() {
+    $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+
+    if ($current_file_name == "advanced-search") {
+        echo 'Search';
+    } else {
+        echo 'Save Record';
+    }
 }
 ?>

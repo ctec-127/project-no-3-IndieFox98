@@ -44,8 +44,12 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
         <option value="psych"<?php if (isset($program) && $program == "psych") echo ' selected="selected"'; ?>>Psychology</option>
         <option value="webdev"<?php if (isset($program) && $program == "webdev") echo ' selected="selected"'; ?>>Web Development</option>
     </select><br>
+    <!-- graduation date -->
+    <label class="col-form-label" for="gday">Graduation Date</label>
+    <input class="form-control" type="date" id="gday" name="gday" value="<?php echo (isset($gday) ? $gday: '');?>">
+    <br>
     <a href="display-records.php">Cancel</a>&nbsp;&nbsp;
-    <button class="btn btn-primary" type="submit">Save Record</button>
+    <button class="btn btn-primary" type="submit"><?=display_button_text();?></button>
     <!-- hidden id field for update functionality -->
     <input type="hidden" name="id" value="<?php echo (isset($id) ? $id : '');?>">
 </form>

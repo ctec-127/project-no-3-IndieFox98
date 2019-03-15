@@ -7,7 +7,7 @@ require_once 'inc/layout/header.inc.php';
 // include file to connect to database
 require_once 'inc/db/mysqli_connect.inc.php';
 
-require_once 'inc/functions/functions.inc.php';
+// require_once 'inc/functions/functions.inc.php';
 require_once 'inc/app/config.inc.php';
 ?>
 
