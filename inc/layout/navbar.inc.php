@@ -1,6 +1,6 @@
 <?php // Filename: navbar.inc.php ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="display-records.php">CTEC 127</a>
+  <a class="navbar-brand" href="display-records.php">Record Manager</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -66,10 +66,32 @@ function display_error_bucket($error_bucket){
     echo '<p>All of these fields are required. Please fill them in.</p>';
 }
 
+// gives user hints about which fields are empty after POST
+function echoIfRequired($field_name) {
+    // don't do it on advanced search page
+    $current_file_name = check_basename();
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && $current_file_name != 'advanced-search') {
+        if ($field_name == 'gpa') {
+            if (empty($_POST['gpa']) && $_POST['gpa'] != "0") {
+                echo '(please fill in)';
+            }
+        } elseif ($field_name == 'aid') {
+            if (!isset($_POST['aid']) || empty($_POST['aid']) && $_POST['aid'] != "0") {
+                echo '(please fill in)';
+            }
+        } else {
+            if (empty($_POST[$field_name])) {
+                echo '(please fill in)';
+            }
+        }
+    }
+}
+
 // function to highlight currently displayed page in navbar
 function echoActiveClassIfRequestMatches($requestUri)
 {
-    $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+    $current_file_name = check_basename();
 
     if ($current_file_name == $requestUri)
         echo 'active';
@@ -77,12 +99,23 @@ function echoActiveClassIfRequestMatches($requestUri)
 
 // function to change submit button text in form.inc.php depending on request uri
 function display_button_text() {
-    $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+    $current_file_name = check_basename();
 
     if ($current_file_name == "advanced-search") {
         echo 'Search';
     } else {
         echo 'Save Record';
     }
+}
+
+// function to check basename of the uri
+function check_basename() {
+    if ($_SERVER['QUERY_STRING']) {
+        $filename = basename($_SERVER['REQUEST_URI'], ".php?" . $_SERVER['QUERY_STRING']);
+    } else {
+        $filename = basename($_SERVER['REQUEST_URI'], ".php");
+    }
+
+    return $filename;
 }
 ?>

@@ -17,7 +17,7 @@ require_once 'inc/app/config.inc.php';
         <?php 
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 if(!empty($_POST['search'])){
-                    $sql = "SELECT * FROM $db_table WHERE " . '"' . $_POST["search"] . '"' . " IN (student_id, first_name, last_name, email, phone, gpa, financial_aid, degree_program) ORDER BY last_name ASC";
+                    $sql = "SELECT * FROM $db_table WHERE " . '"' . $_POST["search"] . '"' . " IN (student_id, first_name, last_name, email, phone, degree_program) ORDER BY last_name ASC";
                     // $sql = "SELECT * FROM student WHERE student_id LIKE '%val%' or field2 LIKE '%val%'
                     $result = $db->query($sql);
 
@@ -28,7 +28,9 @@ require_once 'inc/app/config.inc.php';
                         // echo "<h2 class=\"mt-4\">There are currently no records to display for <strong>last names</strong> starting with <strong>$filter</strong></h2>";
                     } else {  # displays if there ARE search results
                         echo "<h2 class=\"mt-4 text-center\">$result->num_rows record(s) found for \"" . $_POST['search'] . '"</h2>';
+                        echo "<div class=\"small\">";
                         display_record_table($result);
+                        echo "</div>";
                     }
                 } else {  # displays if user didn't input anything in search box
                     echo "<p class=\"display-4 mt-4 text-center\">I can't search if you don't give<br>me something to search for.</p>";

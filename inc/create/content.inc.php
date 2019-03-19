@@ -57,13 +57,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$gpa = $db->real_escape_string($_POST['gpa']);
         $gpa = $db->real_escape_string(strip_tags($_POST['gpa']));
     }
-    if (!isset($_POST['aid']) || empty($_POST['aid']) && $_POST['aid'] != "0") {  # work around interpreting 0 as empty
-        array_push($error_bucket,"<p>Please answer the Financial Aid section.</p>");
-    } else {
-        #$aid = $_POST['aid'];
-        #$aid = $db->real_escape_string($_POST['aid']);
-        $aid = $db->real_escape_string(strip_tags($_POST['aid']));
-    }
     if (empty($_POST['program'])) {
         array_push($error_bucket,"<p>Please select your degree program.</p>");
     } else {
@@ -77,6 +70,13 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$gday = $_POST['gday'];
         #$gday = $db->real_escape_string($_POST['gday']);
         $gday = $db->real_escape_string(strip_tags($_POST['gday']));
+    }
+    if (!isset($_POST['aid']) || empty($_POST['aid']) && $_POST['aid'] != "0") {  # work around interpreting 0 as empty
+        array_push($error_bucket,"<p>Please answer the Financial Aid section.</p>");
+    } else {
+        #$aid = $_POST['aid'];
+        #$aid = $db->real_escape_string($_POST['aid']);
+        $aid = $db->real_escape_string(strip_tags($_POST['aid']));
     }
 
     // If we have no errors than we can try and insert the data
